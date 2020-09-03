@@ -1,6 +1,9 @@
 <template>
     <div>
         <div>
+            <nav-bar></nav-bar>
+        </div>
+        <div>
             <h1>Add Trip</h1>
         </div>
         <div class="SavedTrips">
@@ -25,10 +28,10 @@
 </template>
 
 <script>
+    import NavBar from "./NavBar";
     export default {
         name: "AddTrip",
-
-
+        components: {NavBar},
         data() {
             return {
                 location: "",

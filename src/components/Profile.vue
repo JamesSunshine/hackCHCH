@@ -1,6 +1,9 @@
 <template>
     <div>
         <div>
+            <nav-bar></nav-bar>
+        </div>
+        <div>
         <img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Background image">
         <img src="https://cdn2.iconfinder.com/data/icons/people-80/96/Picture1-512.png" alt="Profile Image">
         <h1>John Smith</h1>
