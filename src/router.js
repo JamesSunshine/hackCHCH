@@ -15,7 +15,7 @@ const routes = [
     {path: "/addTrip", component: AddTrip, name: "addTrip"},
     {path: "/store", component: Store, name:"store"},
     {path: "/leaderboard", component: Leaderboard, name: "leaderboard"},
-    {path: "/badges", component: BadgeProgress, name: "badges"}
+    {path: "/badges", component: BadgeProgress, name: "badges"},
 ];
 
 const router = new VueRouter(
