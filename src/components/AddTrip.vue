@@ -22,6 +22,7 @@
 
             <input id="location" placeholder="Location" type="text" v-model="location">
             <!-- Add map here-->
+            <GoogleMap></GoogleMap>
             <button v-on:click="submit">Submit</button>
         </div>
     </div>
@@ -29,9 +30,10 @@
 
 <script>
     import NavBar from "./NavBar";
+    import GoogleMap from "./GoogleMap";
     export default {
         name: "AddTrip",
-        components: {NavBar},
+        components: {GoogleMap, NavBar},
         data() {
             return {
                 location: "",
