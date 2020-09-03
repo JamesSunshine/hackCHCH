@@ -7,7 +7,6 @@
     "build": "postcss css/tailwind.css -o public/build/tailwind.css",
     "lint": "vue-cli-service lint"
   },
-
   "dependencies": {
     "autoprefixer": "^9.8.6",
     "core-js": "^3.6.5",
