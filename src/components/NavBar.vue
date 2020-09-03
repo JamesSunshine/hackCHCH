@@ -175,15 +175,15 @@
             },
 
             goToLeaderboard() {
-                console.log("Go to leaderboard");
+                this.$router.push({name: "leaderboard"})
             },
 
             goToStore() {
-                console.log("Go to store");
+                this.$router.push({name: "store"})
             },
 
             goToLogout() {
-                console.log("Go to log out");
+                this.$router.push({name: "login"})
             }
 
 
