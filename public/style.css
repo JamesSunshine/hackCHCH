@@ -1,5 +1,23 @@
-@tailwind base;
+.bg-earth-green {
+    background-color: #8D8741;
+}
 
-@tailwind components;
+.bg-earth-blue {
+    background-color: #659DBD;
+}
 
-@tailwind utilities;
+.bg-earth-pink {
+    background-color: #DAAD86;
+}
+
+.bg-earth-brown {
+    background-color: #BC986A;
+}
+
+.bg-earth-light-brown {
+    background-color: #FBEEC1;
+}
+
+body {
+    background-color: #FBEEC1;
+}
