@@ -171,7 +171,7 @@
             },
 
             goToAddTrip() {
-                console.log("Route to add trip");
+                this.$router.push({name: "addTrip"})
             },
 
             goToLeaderboard() {
