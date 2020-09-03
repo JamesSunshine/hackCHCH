@@ -1,6 +1,9 @@
 <template>
     <div>
         <div>
+            <nav-bar></nav-bar>
+        </div>
+        <div>
             <h1>Add Trip</h1>
         </div>
         <div class="SavedTrips">
@@ -19,16 +22,18 @@
 
             <input id="location" placeholder="Location" type="text" v-model="location">
             <!-- Add map here-->
+            <GoogleMap></GoogleMap>
             <button v-on:click="submit">Submit</button>
         </div>
     </div>
 </template>
 
 <script>
+    import NavBar from "./NavBar";
+    import GoogleMap from "./GoogleMap";
     export default {
         name: "AddTrip",
-
-
+        components: {GoogleMap, NavBar},
         data() {
             return {
                 location: "",

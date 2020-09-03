@@ -1,6 +1,9 @@
 <template>
     <div>
         <div>
+            <nav-bar></nav-bar>
+        </div>
+        <div>
         <img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Background image">
         <img src="https://cdn2.iconfinder.com/data/icons/people-80/96/Picture1-512.png" alt="Profile Image">
         <h1>John Smith</h1>
@@ -10,6 +13,8 @@
         </div>
         <div class="badges">
             <h2>Badges</h2>
+
+            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" v-on:click="goToBadgeProgress">Progress</button>
         </div>
         <div class="stats">
             <h1>Stats</h1>
@@ -22,7 +27,15 @@
 
 <script>
     export default {
-        name: "Profile"
+        name: "Profile",
+
+
+        methods: {
+            goToBadgeProgress() {
+                this.$router.push({name: "badges"});
+            },
+
+        }
     }
 </script>
 
