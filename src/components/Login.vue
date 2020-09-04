@@ -1,7 +1,9 @@
 <template>
     <div class="">
-        <div class="pt-32">
-            <div class="bg-white m-auto general-container-rounded mx-6">
+        <div class="pt-20 full-height">
+            <img src="https://cdn.discordapp.com/attachments/751284461253033984/751561365084438639/lol.png" alt="logo" class=" height-logo-login inline-block"/>
+            <label class="inline-block ml-4 text-3xl">CompetiTrees</label>
+            <div class="bg-white m-auto general-container-rounded mx-6 shadow">
                 <div class="">
                     <div class="">
                         <h2 class="text-2xl">Log In</h2>
@@ -32,6 +34,7 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 
@@ -68,6 +71,14 @@
         box-sizing: border-box;
         color: black;
     }
+
+    .height-logo-login {
+        height: 100px;
+        margin: auto;
+        margin-bottom: 2em;
+        margin-left: 2.5em;
+    }
+
 
 
 </style>

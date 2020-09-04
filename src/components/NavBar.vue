@@ -17,11 +17,13 @@
                     <path d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
+
+            <img src="https://media.discordapp.net/attachments/751284461253033984/751558663772176465/logo-without-shorter.png?width=735&height=671" alt="logo" class=" height-logo mr-2"/>
+            <!--            <img src="/logos/fox-hub.png" alt="Logo" class="h-auto w-24" />-->
             <div class="">
                 CompetiTrees
             </div>
 
-            <!--            <img src="/logos/fox-hub.png" alt="Logo" class="h-auto w-24" />-->
         </div>
         <div class="text-right">
             Leaf Points: {{leafPoints}}
@@ -56,6 +58,8 @@
               class="flex w-full items-center p-4 border-b"
       >
           <label>CompetiTrees</label>
+                      <img src="https://media.discordapp.net/attachments/751284461253033984/751558663772176465/logo-without-shorter.png?width=735&height=671" alt="logo" class=" height-logo ml-20"/>
+
           <!--        <img src="/logos/fox-hub.png" alt="Logo" class="h-auto w-32 mx-auto" />-->
       </span>
             <span
@@ -306,4 +310,7 @@
 
 <style scoped>
 
+    .height-logo {
+        height: 40px;
+    }
 </style>

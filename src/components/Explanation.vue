@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav-bar></nav-bar>
-        <div class="pt-32">
+        <div class="pt-32 full-height">
             <div class="bg-white general-container-rounded mx-6  shadow">
                 <p class="text-gray-800 text-2xl border-b-2 mb-4">How it Works</p>
                 <div class="text-sm">
