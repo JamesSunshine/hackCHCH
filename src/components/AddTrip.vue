@@ -37,7 +37,7 @@
 
                 </div>
                 <div v-if="!disableSubmit">
-                <button class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
                         v-on:click="submit"
                         v-if="fileSubmitted">Submit
                 </button>
