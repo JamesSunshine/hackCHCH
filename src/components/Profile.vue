@@ -123,7 +123,7 @@
             return {
                 userName: "",
                 badgeEarned: false,
-                leafPoints: 0
+                leafPoints: 0,
             }
         },
 
@@ -132,6 +132,7 @@
             goToBadgeProgress() {
                 this.$router.push({name: "badges"});
             },
+
 
         },
 

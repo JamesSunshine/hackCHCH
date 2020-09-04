@@ -54,6 +54,7 @@
                 sessionStorage.setItem("totalLeafPoints", 54);
                 sessionStorage.setItem("leafPoints", 54);
                 sessionStorage.setItem("badgeEarnt", "false");
+                sessionStorage.setItem("submittedValues", "false");
                 await this.$router.push({name: "profile"});
             }
         }
