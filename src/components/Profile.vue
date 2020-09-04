@@ -18,7 +18,7 @@
                 </div>
                 <div class="flex justify-center pb-3 text-grey-dark">
                     <div class="text-center mr-3 border-r pr-3">
-                        <h2>34</h2>
+                        <h2>{{this.leafPoints}}</h2>
                         <span>Leaf Points</span>
                     </div>
                     <div class="text-center">
@@ -111,6 +111,7 @@
         mounted: async function () {
             this.userName = sessionStorage.getItem("userName");
             let badgeEarned = sessionStorage.getItem("badgeEarnt");
+            this.leafPoints = sessionStorage.getItem("leafPoints")
             if (badgeEarned === "true") {
                 this.badgeEarned = true;
             }
@@ -119,7 +120,8 @@
         data() {
             return {
                 userName: "",
-                badgeEarned: false
+                badgeEarned: false,
+                leafPoints: 0
             }
         },
 

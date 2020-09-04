@@ -135,6 +135,8 @@
             deductPoints(points) {
                 this.$refs.nav.spendPoints(points);
                 this.showBadge = true;
+                let currentPoints = parseInt(sessionStorage.getItem("leafPoints")) - points;
+                sessionStorage.setItem("leafPoints", currentPoints.toString())
                 sessionStorage.setItem("badgeEarnt", "true");
                 setTimeout(() => {
                     this.showBadge = false;
