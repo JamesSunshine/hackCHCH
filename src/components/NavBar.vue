@@ -17,10 +17,15 @@
                     <path d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
-            <label style="">Team One</label>
+            <div class="">
+                CompetiTrees
+            </div>
+
             <!--            <img src="/logos/fox-hub.png" alt="Logo" class="h-auto w-24" />-->
         </div>
-
+        <div class="text-right">
+            Leaf Points: 34
+        </div>
 
         <transition
                 enter-class="opacity-0"
@@ -50,7 +55,7 @@
               @click="isOpen = false"
               class="flex w-full items-center p-4 border-b"
       >
-          <label>Team One</label>
+          <label>CompetiTrees</label>
           <!--        <img src="/logos/fox-hub.png" alt="Logo" class="h-auto w-32 mx-auto" />-->
       </span>
             <span

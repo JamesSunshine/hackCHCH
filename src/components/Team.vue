@@ -29,7 +29,7 @@
 
             <div>
                 <label class="text-lg font-bold">Team Forest</label><br>
-                45 planted trees
+                5 planted trees
             </div>
 
 
