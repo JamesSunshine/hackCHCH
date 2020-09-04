@@ -28,9 +28,9 @@
                 </div>
             </div>
 
-            <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5">
+            <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5 height-top-badges">
                 <div class="">
-                    <div class="border-b-2 border-gray-500 pb-2">
+                    <div class="border-b-2 border-gray-500 pb-2 overflow-hidden">
                         <label class="text-lg font-bold ">Top Badges</label>
                         <button class="bg-earth-brown round-button float-right" v-on:click="goToBadgeProgress">View all
                         </button>
@@ -38,7 +38,23 @@
                     </div>
 
                     <div class="mt-4">
-                        Top 5 badges go here
+                        <img class="inline-block mr-12"
+                             src="https://media.discordapp.net/attachments/751284461253033984/751297605111382106/badge6.png?width=586&height=671"
+                             alt="Badge" width="70px" v-if="badgeEarned">
+                        <img class="inline-block mr-12"
+                             src="https://media.discordapp.net/attachments/751284461253033984/751285810103451758/badge1.png?width=586&height=671"
+                             alt="Badge" width="70px">
+                        <img class="inline-block "
+                             src="https://media.discordapp.net/attachments/751284461253033984/751297608080687244/badge7.png?width=586&height=671"
+                             alt="Badge" width="70px">
+                        <img class="inline-block ml-12"
+                             src="https://media.discordapp.net/attachments/751284461253033984/751297615064334406/badge9.png?width=586&height=671"
+                             alt="Badge" width="70px" v-if="!badgeEarned">
+
+
+
+
+
                     </div>
                 </div>
 
@@ -94,11 +110,16 @@
         components: {NavBar},
         mounted: async function () {
             this.userName = sessionStorage.getItem("userName");
+            let badgeEarned = sessionStorage.getItem("badgeEarnt");
+            if (badgeEarned === "true") {
+                this.badgeEarned = true;
+            }
         },
 
         data() {
             return {
                 userName: "",
+                badgeEarned: false
             }
         },
 
@@ -108,12 +129,16 @@
                 this.$router.push({name: "badges"});
             },
 
-        }
+        },
+
 
     }
 </script>
 
 <style scoped>
+    .height-top-badges {
+        height: 220px
+    }
 
 </style>
 
