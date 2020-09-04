@@ -13,7 +13,7 @@
             </div>
             <div class="flex justify-center pb-3 text-grey-dark">
                 <div class="text-center mr-3 pr-3">
-                    <h2>2384</h2>
+                    <h2>36</h2>
                     <span>Total Leaf Points</span>
                 </div>
             </div>
