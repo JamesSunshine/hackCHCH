@@ -7,6 +7,7 @@ import AddTrip from "./components/AddTrip";
 import Leaderboard from "@/components/Leaderboard";
 import BadgeProgress from "@/components/BadgeProgress";
 import Store from "@/components/Store";
+import Team from "./components/Team";
 
 const routes = [
     {path: "/", component: HelloWorld, name: "helloworld"},
@@ -16,6 +17,7 @@ const routes = [
     {path: "/store", component: Store, name:"store"},
     {path: "/leaderboard", component: Leaderboard, name: "leaderboard"},
     {path: "/badges", component: BadgeProgress, name: "badges"},
+    {path: "/team", component: Team, name: "team"},
 ];
 
 const router = new VueRouter(

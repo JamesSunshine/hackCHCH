@@ -18,15 +18,17 @@
             <button>Remove Scheduled Trip</button>
         </div>
         <div>
-            <button>Upload Data</button>
+            <input id="fileUpload" type="file" hidden>
+            <button @click="chooseFile()">Upload Data</button>
         </div>
         <div>
             <label v-on:click="submit" for="location">Manual Entry</label>
 
+
             <input id="location" placeholder="Location" type="text" v-model="location">
             <!-- Add map here-->
-            <GoogleMap></GoogleMap>
-            <button v-on:click="submit">Submit</button>
+            <GoogleMap v-bind:kml-upload="uploaded"></GoogleMap>
+            <button v-on:click="submit" v-if="fileSubmitted">Submit</button>
         </div>
     </div>
 </template>
@@ -42,6 +44,8 @@ export default {
         return {
             location: "",
             distance: "",
+            uploaded: null,
+            fileSubmitted: false,
             scheduledTrips: [
                 {
                     tripId: 0,
@@ -73,6 +77,14 @@ export default {
 
     methods: {
 
+        chooseFile() {
+            this.upload = document.getElementById("fileUpload").click();
+            this.distance = 6.2;
+            // Can come from KML
+            this.transportType = "walk";
+            this.fileSubmitted = true;
+        },
+
         /**
          * Calculates the carbon distance given two points
          * Assumes fuel efficiency of 8L/100Km for cars and co2 production of 1138 g/km
@@ -96,7 +108,7 @@ export default {
         submit() {
             let points = sessionStorage.getItem("leafPoints");
             //works even if points is null
-            points += this.carbonDistance(0, "scooter") / 1000;
+            points += this.carbonDistance(0, this.transportType) / 1000;
             sessionStorage.setItem("leafPoints", points.toString());
             //console.log("Implement me");
         },
