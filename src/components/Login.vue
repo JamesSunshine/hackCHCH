@@ -58,9 +58,6 @@
 </script>
 
 <style scoped>
-    .radius-border {
-        border-radius: 2em;
-    }
 
     .custom-input {
         width: 100%;
