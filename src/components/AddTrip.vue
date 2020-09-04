@@ -33,7 +33,7 @@
                 </button>
                 <div>
 
-                    <GoogleMap v-bind:kml-upload="uploaded" class="m-auto"></GoogleMap>
+                    <GoogleMap v-bind:kml-upload="uploaded" class="m-auto" ref="map"></GoogleMap>
 
                 </div>
                 <div v-if="!disableSubmit">
@@ -139,7 +139,7 @@
                         distance: "1.4",
                         time: "Weekdays",
                     },
-                ]
+                ],
             }
         },
 
@@ -190,6 +190,8 @@
                     //update points
                     this.$refs.nav.loadPoints(points);
                     sessionStorage.setItem("leafPoints", Math.round(points).toString());
+                    this.$refs.map.updateMarkers();
+
                 } else {
                     sessionStorage.setItem("submittedValues", "true");
                     this.firstSubmit = true;

@@ -46,8 +46,8 @@
 
         data() {
             return {
-                userName: "",
-                password: "",
+                userName: "Ryo Nishikawa",
+                password: "Password123",
             }
         },
 
