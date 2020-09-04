@@ -149,21 +149,42 @@
                     v-on:click="goToStore"
                     class="flex items-center p-4 hover:bg-indigo-500 hover:text-white "
             ><span class="mr-2">
-          <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  class="w-6 h-6"
-          >
+                <svg
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        class="w-6 h-6"
+                >
+            <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+        </span>
+
+        <span>Store</span></span
+            >
+            <span
+                    @click="isOpen = false"
+                    v-on:click="goToHowItWorks"
+                    class="flex items-center p-4 hover:bg-indigo-500 hover:text-white "
+            ><span class="mr-2">
+                <svg
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        class="w-6 h-6"
+                >
             <path
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             ></path>
           </svg>
         </span>
-        <span>Store</span></span
+
+        <span>How it Works</span></span
             >
             <span
                     @click="isOpen = false"
@@ -171,6 +192,7 @@
                     class="flex items-center p-4 hover:bg-indigo-500 hover:text-white "
             ><span class="mr-2">
         </span>
+
         <span>Log out</span></span
             >
 
@@ -179,63 +201,67 @@
 </template>
 
 <script>
-    export default {
-        name: "NavBar",
+export default {
+    name: "NavBar",
 
-        data() {
-            return {
-                isOpen: false
-            };
+    data() {
+        return {
+            isOpen: false
+        };
+    },
+    methods: {
+        drawer() {
+            this.isOpen = !this.isOpen;
         },
-        methods: {
-            drawer() {
-                this.isOpen = !this.isOpen;
-            },
 
 
-            goToProfile() {
-                this.$router.push({name: "profile"})
-            },
-
-            goToTeam() {
-                this.$router.push({name: "team"})
-            },
-
-            goToAddTrip() {
-                this.$router.push({name: "addTrip"})
-            },
-
-            goToLeaderboard() {
-                this.$router.push({name: "leaderboard"})
-            },
-
-            goToStore() {
-                this.$router.push({name: "store"})
-            },
-
-            goToLogout() {
-                this.$router.push({name: "login"})
-            }
-
-
+        goToProfile() {
+            this.$router.push({name: "profile"})
         },
-        watch: {
-            isOpen: {
-                immediate: true,
-                handler(isOpen) {
-                    if (process.client) {
-                        if (isOpen) document.body.style.setProperty("overflow", "hidden");
-                        else document.body.style.removeProperty("overflow");
-                    }
+
+        goToTeam() {
+            this.$router.push({name: "team"})
+        },
+
+        goToAddTrip() {
+            this.$router.push({name: "addTrip"})
+        },
+
+        goToLeaderboard() {
+            this.$router.push({name: "leaderboard"})
+        },
+
+        goToStore() {
+            this.$router.push({name: "store"})
+        },
+
+        goToHowItWorks() {
+            this.$router.push({name: "explanation"})
+        },
+
+        goToLogout() {
+            this.$router.push({name: "login"})
+        }
+
+
+    },
+    watch: {
+        isOpen: {
+            immediate: true,
+            handler(isOpen) {
+                if (process.client) {
+                    if (isOpen) document.body.style.setProperty("overflow", "hidden");
+                    else document.body.style.removeProperty("overflow");
                 }
             }
-        },
-        mounted() {
-            document.addEventListener("keydown", e => {
-                if (e.keyCode == 27 && this.isOpen) this.isOpen = false;
-            });
-        },
-    }
+        }
+    },
+    mounted() {
+        document.addEventListener("keydown", e => {
+            if (e.keyCode == 27 && this.isOpen) this.isOpen = false;
+        });
+    },
+}
 </script>
 
 <style scoped>
