@@ -87,8 +87,6 @@
             * Repopulates the map with markers.
              */
             updateMarkers() {
-
-                console.log("updating!");
                 for (let i = 0; i < this.actualMarkers.length; i++) {
                     let marker = this.actualMarkers[i];
                     marker.setVisible(true);
