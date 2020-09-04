@@ -108,7 +108,7 @@ export default {
         submit() {
             let points = sessionStorage.getItem("leafPoints");
             //works even if points is null
-            points += this.carbonDistance(0, this.transportType) / 1000;
+            points += this.carbonDistance(this.distance, this.transportType) / 1000;
             sessionStorage.setItem("leafPoints", points.toString());
             //console.log("Implement me");
         },
