@@ -28,7 +28,7 @@
             <input id="location" placeholder="Location" type="text" v-model="location">
             <!-- Add map here-->
             <GoogleMap v-bind:kml-upload="uploaded"></GoogleMap>
-            <button v-on:click="submit">Submit</button>
+            <button v-on:click="submit" v-if="fileSubmitted">Submit</button>
         </div>
     </div>
 </template>
@@ -45,6 +45,7 @@ export default {
             location: "",
             distance: "",
             uploaded: null,
+            fileSubmitted: false,
             scheduledTrips: [
                 {
                     tripId: 0,
@@ -78,6 +79,10 @@ export default {
 
         chooseFile() {
             this.upload = document.getElementById("fileUpload").click();
+            this.distance = 6.2;
+            // Can come from KML
+            this.transportType = "walk";
+            this.fileSubmitted = true;
         },
 
         /**
@@ -103,7 +108,7 @@ export default {
         submit() {
             let points = sessionStorage.getItem("leafPoints");
             //works even if points is null
-            points += this.carbonDistance(0, "scooter") / 1000;
+            points += this.carbonDistance(0, this.transportType) / 1000;
             sessionStorage.setItem("leafPoints", points.toString());
             //console.log("Implement me");
         },

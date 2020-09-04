@@ -76,8 +76,8 @@
         data() {
             return {
                 items: [{leafPoints: 70, userName: "Nishi Kawa"},
-                    {leafPoints: 50, userName: "Ryzaak Sunshine"},
-                    {leafPoints: 34, userName: "John Smith"},
+                    {leafPoints: 50, userName: "John Smith"},
+                    {leafPoints: 34, userName: "Ryzaak Sunshine"},
                     {leafPoints: 2, userName: "Jamie Maurice"}],
 
                 teamPoints: [{leafPoints: 36, teamName: "Green Corp"},
