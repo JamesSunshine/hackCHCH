@@ -84,8 +84,8 @@
 
 <style scoped>
     #map {
-        height: 400px;
-        width: 400px;
+        height: 300px;
+        width: 300px;
         background: gray;
     }
 </style>

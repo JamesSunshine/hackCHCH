@@ -110,13 +110,13 @@
                 items: [
                     {
                         itemId: 0,
-                        cost: 45,
+                        cost: 950,
                         name: "Plant a native tree",
                         description: "Plant a native tree! And get a discount coffee."
                     },
                     {
                         itemId: 1,
-                        cost: 5,
+                        cost: 50,
                         name: "Discount Coffee",
                         description: "Discount coffee from a local business."
                     },
@@ -138,7 +138,7 @@
                 sessionStorage.setItem("badgeEarnt", "true");
                 setTimeout(() => {
                     this.showBadge = false;
-                }, 4000);
+                }, 2500);
                 this.finished();
             },
             finished() {
