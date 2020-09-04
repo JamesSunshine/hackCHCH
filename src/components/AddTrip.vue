@@ -18,14 +18,16 @@
             <button>Remove Scheduled Trip</button>
         </div>
         <div>
-            <button>Upload Data</button>
+            <input id="fileUpload" type="file" hidden>
+            <button @click="chooseFile()">Upload Data</button>
         </div>
         <div>
             <label v-on:click="submit" for="location">Manual Entry</label>
 
+
             <input id="location" placeholder="Location" type="text" v-model="location">
             <!-- Add map here-->
-            <GoogleMap></GoogleMap>
+            <GoogleMap v-bind:kml-upload="uploaded"></GoogleMap>
             <button v-on:click="submit">Submit</button>
         </div>
     </div>
@@ -42,6 +44,7 @@ export default {
         return {
             location: "",
             distance: "",
+            uploaded: null,
             scheduledTrips: [
                 {
                     tripId: 0,
@@ -72,6 +75,10 @@ export default {
     },
 
     methods: {
+
+        chooseFile() {
+            this.upload = document.getElementById("fileUpload").click();
+        },
 
         /**
          * Calculates the carbon distance given two points

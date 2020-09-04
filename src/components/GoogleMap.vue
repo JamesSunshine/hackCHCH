@@ -7,6 +7,7 @@
         name: "GoogleMap",
 
         props: {
+            kmlUpload: null,
             lat: {
                 type: Number,
                 default: -43.5320
@@ -30,6 +31,7 @@
                 map: null,
                 markerLat: null,
                 markerLong: null,
+                kmlLayer: null,
             }
         },
 
@@ -52,6 +54,17 @@
                 this.map = new window.google.maps.Map(this.$refs["map"], {
                     center: {lat: this.lat, lng: this.long},
                     zoom: this.zoom
+                });
+
+                this.kmlLayer = new window.google.maps.KmlLayer(this.kmlUpload, {
+                    suppressInfoWindows: true,
+                    preserveViewport: false,
+                    map: this.map
+                });
+                this.kmlLayer.addListener('click', function(event) {
+                    let content = event.featureData.infoWindowHtml;
+                    let testimonial = document.getElementById('capture');
+                    testimonial.innerHTML = content;
                 });
 
                 //Populate with markers
