@@ -13,7 +13,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751297605111382106/badge6.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class="pl-3 text border-b-2 mr-10">Fantail</p>
                             <p class=" pl-3 text-xs">Redeemed 1000 leaf points</p>
@@ -27,7 +27,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751285810103451758/badge1.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class=" pl-3 text border-b-2 mr-10">Giant Kauri</p>
                             <p class=" pl-3 text-xs">Donated to plant a tree</p>
@@ -41,7 +41,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751297608080687244/badge7.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class=" pl-3 text border-b-2 mr-10">Rimu</p>
                             <p class=" pl-3 text-xs">Travelled 500 km by bike</p>
@@ -56,7 +56,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751286974073274430/badge4.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class=" pl-3 text border-b-2 mr-10">Rimu</p>
                             <p class=" pl-3 text-xs">Travelled 100 km by bike</p>
@@ -71,7 +71,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751297615064334406/badge9.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class=" pl-3 text border-b-2 mr-10">Rangiora</p>
                             <p class=" pl-3 text-xs">Walked 500 km</p>
@@ -85,7 +85,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751298135099179058/badge10.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class=" pl-3 text border-b-2 mr-10">Rangiora</p>
                             <p class=" pl-3 text-xs">Walked 100 km
@@ -99,7 +99,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751286362686226482/badge2.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class=" pl-3 text border-b-2 mr-10">Rangiora</p>
                             <p class=" pl-3 text-xs">Walked 50 km</p>
@@ -113,7 +113,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751297609645293588/badge8.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class=" pl-3 text border-b-2 mr-10">Braving the cold</p>
                             <p class=" pl-3 text-xs">Made 100 trips in freezing weather</p>
@@ -127,7 +127,7 @@
                         <img class="inline-block absolute"
                              src="https://media.discordapp.net/attachments/751284461253033984/751286590915084298/badge3.png?width=586&height=671"
                              alt="Badge" width="100px">
-                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                        <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow"
                              style="width: 87%">
                             <p class=" pl-3 text border-b-2 mr-10">Braving the cold</p>
                             <p class=" pl-3 text-xs">Made 10 trips in freezing weather</p>

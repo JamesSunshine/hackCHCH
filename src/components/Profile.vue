@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5 height-top-badges">
+            <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5 height-top-badges  shadow">
                 <div class="">
                     <div class="border-b-2 border-gray-500 pb-2 overflow-hidden">
                         <label class="text-lg font-bold ">Top Badges</label>
