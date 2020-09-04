@@ -24,7 +24,7 @@
             <!--            <img src="/logos/fox-hub.png" alt="Logo" class="h-auto w-24" />-->
         </div>
         <div class="text-right">
-            Leaf Points: 34
+            Leaf Points: {{leafPoints}}
         </div>
 
         <transition
@@ -201,67 +201,85 @@
 </template>
 
 <script>
-export default {
-    name: "NavBar",
+    export default {
+        name: "NavBar",
 
-    data() {
-        return {
-            isOpen: false
-        };
-    },
-    methods: {
-        drawer() {
-            this.isOpen = !this.isOpen;
+
+        data() {
+            return {
+                isOpen: false,
+                leafPoints: 0,
+            };
         },
 
+        methods: {
+            drawer() {
+                this.isOpen = !this.isOpen;
+            },
 
-        goToProfile() {
-            this.$router.push({name: "profile"})
+            loadPoints() {
+                this.leafPoints = sessionStorage.getItem('totalLeafPoints');
+            },
+
+            spendPoints(points) {
+                this.leafPoints -= points;
+                sessionStorage.setItem('totalLeafPoints', this.leafPoints);
+            },
+
+
+            goToProfile() {
+                this.$router.push({name: "profile"})
+            },
+
+            goToTeam() {
+                this.$router.push({name: "team"})
+            },
+
+            goToAddTrip() {
+                this.$router.push({name: "addTrip"})
+            },
+
+            goToLeaderboard() {
+                this.$router.push({name: "leaderboard"})
+            },
+
+            goToStore() {
+                this.$router.push({name: "store"})
+            },
+
+            goToHowItWorks() {
+                this.$router.push({name: "explanation"})
+            },
+
+            goToLogout() {
+                this.$router.push({name: "login"})
+            },
+
+            stuff() {
+                console.log("loaded");
+            },
+
+
         },
-
-        goToTeam() {
-            this.$router.push({name: "team"})
-        },
-
-        goToAddTrip() {
-            this.$router.push({name: "addTrip"})
-        },
-
-        goToLeaderboard() {
-            this.$router.push({name: "leaderboard"})
-        },
-
-        goToStore() {
-            this.$router.push({name: "store"})
-        },
-
-        goToHowItWorks() {
-            this.$router.push({name: "explanation"})
-        },
-
-        goToLogout() {
-            this.$router.push({name: "login"})
-        }
-
-
-    },
-    watch: {
-        isOpen: {
-            immediate: true,
-            handler(isOpen) {
-                if (process.client) {
-                    if (isOpen) document.body.style.setProperty("overflow", "hidden");
-                    else document.body.style.removeProperty("overflow");
+        watch: {
+            isOpen: {
+                immediate: true,
+                handler(isOpen) {
+                    if (process.client) {
+                        if (isOpen) document.body.style.setProperty("overflow", "hidden");
+                        else document.body.style.removeProperty("overflow");
+                    }
                 }
             }
-        }
-    },
-    mounted() {
-        document.addEventListener("keydown", e => {
-            if (e.keyCode == 27 && this.isOpen) this.isOpen = false;
-        });
-    },
-}
+        },
+        mounted() {
+            document.addEventListener("keydown", e => {
+                if (e.keyCode == 27 && this.isOpen) this.isOpen = false;
+            });
+            this.loadPoints();
+            this.stuff();
+        },
+    }
 </script>
 
 <style scoped>

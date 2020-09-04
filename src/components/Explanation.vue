@@ -1,5 +1,6 @@
 <template>
 <div>
+    <nav-bar></nav-bar>
     <br><br><br>
     <p>How it Works:</p>
     <div>
@@ -16,8 +17,10 @@
 </template>
 
 <script>
+import NavBar from "./NavBar";
 export default {
-name: "Explanation.vue"
+name: "Explanation.vue",
+    components: {NavBar}
 }
 </script>
 

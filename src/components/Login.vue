@@ -51,6 +51,7 @@
         methods: {
             async submit() {
                 sessionStorage.setItem("userName", this.userName);
+                sessionStorage.setItem("totalLeafPoints", 34);
                 await this.$router.push({name: "profile"});
             }
         }

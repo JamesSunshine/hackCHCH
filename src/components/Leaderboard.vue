@@ -1,5 +1,6 @@
 <template>
     <div class="">
+        <nav-bar></nav-bar>
         <ul class="flex">
             <li class="-mb-px mr-1 mt-16" v-on:click="openTab('teamLeaf')">
                 <p class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold">
@@ -70,9 +71,11 @@
 </template>
 
 <script>
+    import NavBar from "./NavBar";
+
     export default {
         name: "Leaderboard",
-
+        components: {NavBar},
         data() {
             return {
                 items: [{leafPoints: 70, userName: "Nishi Kawa"},

@@ -1,14 +1,14 @@
 <template>
     <div>
         <div>
-            <nav-bar></nav-bar>
+            <nav-bar ref="nav"></nav-bar>
         </div>
         <div class="pt-6">
             <h1>Leaf store</h1>
         </div>
         <div class="p-3 m-5">
             <div v-for="item in items" :key="item.itemId" class="general-container-rounded bg-white m-8">
-                <div v-on:click="confirm" class="">
+                <div v-on:click="confirm(item.cost)" class="">
                     <p class="tb-float-right text-3xl">{{item.cost}}</p>
                     <img class="content-center" src="../assets/treeForStore.png" alt="Store image">
                     <p class="text-center text-xl font-bold">{{item.name}}</p>
@@ -22,6 +22,7 @@
 
 <script>
     import NavBar from "./NavBar";
+
     export default {
         name: "Store",
         components: {NavBar},
@@ -45,9 +46,9 @@
             }
         },
         methods: {
-          confirm() {
-              console.log("Implement me!");
-            }
+            confirm(points) {
+                this.$refs.nav.spendPoints(points);
+            },
         },
     }
 </script>
