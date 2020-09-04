@@ -31,3 +31,11 @@ body {
     border-radius: 2em;
 }
 
+.round-button {
+    border-radius: 2em;
+    padding: 0.2em 1em;
+}
+
+.float-right {
+    float: right;
+}

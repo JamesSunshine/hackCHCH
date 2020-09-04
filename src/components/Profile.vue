@@ -1,7 +1,5 @@
 <template>
     <div class="pt-32">
-        <nav-bar></nav-bar>
-
 <!--        <div class="bg-white m-auto general-container-rounded mx-6">-->
             <div class="m-auto bg-white radius-border overflow-hidden shadow mx-5">
                 <img src="https://cdn.discordapp.com/attachments/726046163576422512/751237699356196925/unknown.png" class="w-full"/>
@@ -23,22 +21,41 @@
                         <span>Badges</span>
                     </div>
                 </div>
-<!--            </div>-->
         </div>
+
         <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5">
-            <div class="border-b-2 mb-5 pb-5">
-            <label class="text-lg font-bold">Top Badges</label><br>
-                Top 5 badges go here
+            <div class="">
+                <div class="border-b-2 border-gray-500 pb-2">
+                    <label class="text-lg font-bold ">Top Badges</label>
+                    <button class="bg-earth-brown round-button float-right" v-on:click="goToBadgeProgress">View all</button><br>
+                </div>
+
+                <div class="mt-4">
+                    Top 5 badges go here
+                </div>
             </div>
 
+        </div>
+
+        <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5">
             <div>
-                <label class="text-lg font-bold">All Badges</label><br>
-                All badges go here
+                <div class="border-b-2 border-gray-500 pb-2">
+                    <label class="text-lg font-bold">User statistics</label><br>
+                </div>
+                <div class="mt-4">
+                    <label>Distance: 0km</label><br>
+                    <label>CO2 saved: 0</label>
+                </div>
+
             </div>
+        </div>
 
-
-            </div>
-
+<!--        <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5">-->
+<!--            <div>-->
+<!--                <label class="text-lg font-bold">All Badges</label><br>-->
+<!--                All badges go here-->
+<!--            </div>-->
+<!--        </div>-->
 <!--        <div>-->
 <!--        <img src="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Background image">-->
 <!--        <img src="https://cdn2.iconfinder.com/data/icons/people-80/96/Picture1-512.png" alt="Profile Image">-->
