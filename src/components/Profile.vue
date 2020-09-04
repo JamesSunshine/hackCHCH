@@ -22,7 +22,8 @@
                         <span>Leaf Points</span>
                     </div>
                     <div class="text-center">
-                        <h2>10</h2>
+                        <h2 v-if="!badgeEarned">8</h2>
+                        <h2 v-if="badgeEarned">9</h2>
                         <span>Badges</span>
                     </div>
                 </div>
