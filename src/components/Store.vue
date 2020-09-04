@@ -12,7 +12,7 @@
                 <img class="inline-block absolute"
                      src="https://media.discordapp.net/attachments/751284461253033984/751297605111382106/badge6.png?width=586&height=671"
                      alt="Badge" width="100px">
-                <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24"
+                <div class="inline-block pl-16 py-4 bg-white mt-3 float-right rounded rounded-r-full h-24 shadow-2xl"
                      style="width: 87%">
                     <p class="pl-3 text border-b-2 mr-10">Fantail</p>
                     <p class=" pl-3 text-xs">Redeemed 1000 leaf points</p>
