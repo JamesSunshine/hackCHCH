@@ -47,7 +47,7 @@
                     </button>
                 </div>
                 <div v-else>
-                    <button class="bg-red-300 hover:bg-red-300 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
+                    <button class="bg-red-300 hover:bg-red-300 text-white font-bold py-2 px-4 rounded my-5 m-10 w-56"
                             disabled>Submit
                     </button>
                 </div>
