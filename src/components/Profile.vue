@@ -39,9 +39,10 @@
                     </div>
 
                     <div class="mt-4">
-                        <img class="inline-block mr-12"
+                        <img class="inline-block mr-12 tooltip"
                              src="https://media.discordapp.net/attachments/751284461253033984/751297605111382106/badge6.png?width=586&height=671"
-                             alt="Badge" width="70px" v-if="badgeEarned">
+                             alt="Badge" width="70px" v-if="badgeEarned"
+                            v-on:click="goToBadgeProgress">
                         <img class="inline-block mr-12"
                              src="https://media.discordapp.net/attachments/751284461253033984/751285810103451758/badge1.png?width=586&height=671"
                              alt="Badge" width="70px">
@@ -141,6 +142,17 @@
 <style scoped>
     .height-top-badges {
         height: 220px
+    }
+
+    .tooltip .tooltip-text {
+        visibility: hidden;
+        text-align: center;
+        padding: 2px 6px;
+        position: absolute;
+        z-index: 100;
+    }
+    .tooltip:hover .tooltip-text {
+        visibility: visible;
     }
 
 </style>
