@@ -1,8 +1,8 @@
 <template>
     <div class="">
         <div class="pt-32">
-            <div class="bg-white m-auto px-10 py-3 radius-border mx-6">
-                <div class="radius-border">
+            <div class="bg-white m-auto general-container-rounded mx-6">
+                <div class="">
                     <div class="">
                         <h2 class="text-2xl">Log In</h2>
                     </div>

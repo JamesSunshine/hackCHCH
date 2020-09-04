@@ -21,3 +21,8 @@
 body {
     background-color: #FBEEC1;
 }
+
+.general-container-rounded {
+    border-radius: 2em;
+    padding: 2em;
+}
