@@ -80,7 +80,7 @@
             return {
                 items: [{leafPoints: 70, userName: "Nishi Kawa"},
                     {leafPoints: 50, userName: "John Smith"},
-                    {leafPoints: 34, userName: "Ryzaak Sunshine"},
+                    {leafPoints: 37, userName: "Ryzaak Sunshine"},
                     {leafPoints: 2, userName: "Jamie Maurice"}],
 
                 teamPoints: [{leafPoints: 36, teamName: "Green Corp"},
@@ -99,8 +99,23 @@
             }
         },
 
+        mounted: async function () {
+            let points = sessionStorage.getItem("leafPoints");
+            let uName = sessionStorage.getItem("userName");
+            this.items.push({leafPoints: points, userName: uName});
+            this.items.sort(this.itemComparison);
+        },
+
         methods: {
 
+
+            itemComparison(itemA, itemB) {
+                if (itemA.leafPoints > itemB.leafPoints) {
+                    return itemA;
+                } else {
+                    return itemB;
+                }
+            },
 
             openTab(tab) {
                 switch (tab) {
