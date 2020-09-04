@@ -102,7 +102,7 @@
         mounted: async function () {
             let points = sessionStorage.getItem("leafPoints");
             let uName = sessionStorage.getItem("userName");
-            this.items.push({leafPoints: points, userName: uName});
+            this.items.push({leafPoints: Number.parseInt(points), userName: uName});
             this.items.sort(this.itemComparison);
         },
 
@@ -111,9 +111,9 @@
 
             itemComparison(itemA, itemB) {
                 if (itemA.leafPoints > itemB.leafPoints) {
-                    return itemA;
+                    return -1;
                 } else {
-                    return itemB;
+                    return 1;
                 }
             },
 
