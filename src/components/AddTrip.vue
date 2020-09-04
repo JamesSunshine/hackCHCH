@@ -99,7 +99,7 @@
                         </div>
                         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
         <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-          <button v-on:click="showModal = false"  type="button"
+          <button v-on:click="closeModal"  type="button"
                   class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
             Ok
           </button>
@@ -151,7 +151,7 @@
                 this.transportType = "walk";
                 setTimeout(() => {
                     this.fileSubmitted = true;
-                    this.disableSubmit = true;
+                    this.disableSubmit = false;
                 }, 3000);
             },
 
@@ -190,9 +190,17 @@
                     sessionStorage.setItem("submittedValues", "true");
                     this.firstSubmit = true;
                     this.showModal = true;
-                    this.disableSubmit = true;
                 }
             },
+
+            /**
+             * Handles closing the modal and sets disables the submit button until the user reuploads.
+             */
+            closeModal() {
+
+                this.showModal = false;
+                this.disableSubmit = true;
+            }
 
 
         }
