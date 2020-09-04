@@ -12,7 +12,8 @@
                 <h1 class="text-xl font-bold">Scheduled Trips</h1>
                 <ul>
                     <li class="text-xl" v-for="trip in this.scheduledTrips" :key="trip.tripId">{{ trip.name }}: {{
-                        trip.startLocation }} ->
+                            trip.startLocation
+                        }} ->
                         {{ trip.endLocation }} ({{ trip.distance }} km) [{{ trip.time }}]
                     </li>
                 </ul>
@@ -36,11 +37,14 @@
                     <GoogleMap v-bind:kml-upload="uploaded" class="m-auto" ref="map"></GoogleMap>
 
                 </div>
+                <div v-if="fileSubmitted">
+                    Distance Travelled: {{distance}}km
+                </div>
                 <div v-if="!disableSubmit">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
-                        v-on:click="submit"
-                        v-if="fileSubmitted">Submit
-                </button>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
+                            v-on:click="submit"
+                            v-if="fileSubmitted">Submit
+                    </button>
                 </div>
                 <div v-else>
                     <button class="bg-red-300 hover:bg-red-300 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
@@ -99,7 +103,7 @@
                         </div>
                         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
         <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-          <button v-on:click="closeModal"  type="button"
+          <button v-on:click="closeModal" type="button"
                   class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
             Ok
           </button>
@@ -114,103 +118,103 @@
 </template>
 
 <script>
-    import NavBar from "./NavBar";
-    import GoogleMap from "./GoogleMap";
+import NavBar from "./NavBar";
+import GoogleMap from "./GoogleMap";
 
-    export default {
-        name: "AddTrip",
-        components: {GoogleMap, NavBar},
-        data() {
-            return {
-                location: "",
-                distance: "",
-                uploaded: null,
-                fileSubmitted: false,
-                firstSubmit: false,
-                showModal: false,
-                disableSubmit: false,
-                co2saved: 0,
-                scheduledTrips: [
-                    {
-                        tripId: 0,
-                        name: "Work",
-                        startLocation: "12 Random Street",
-                        endLocation: "19 Ilam Road",
-                        distance: "1.4",
-                        time: "Weekdays",
-                    },
-                ],
+export default {
+    name: "AddTrip",
+    components: {GoogleMap, NavBar},
+    data() {
+        return {
+            location: "",
+            distance: "",
+            uploaded: null,
+            fileSubmitted: false,
+            firstSubmit: false,
+            showModal: false,
+            disableSubmit: false,
+            co2saved: 0,
+            scheduledTrips: [
+                {
+                    tripId: 0,
+                    name: "Work",
+                    startLocation: "12 Random Street",
+                    endLocation: "19 Ilam Road",
+                    distance: "1.4",
+                    time: "Weekdays",
+                },
+            ],
+        }
+    },
+
+    methods: {
+
+        chooseFile() {
+            this.upload = document.getElementById("fileUpload").click();
+            this.distance = 2.2;
+            sessionStorage.setItem("distance", this.distance)
+            this.co2saved = this.carbonDistance(this.distance, "walk");
+            sessionStorage.setItem("co2saved", this.co2saved);
+            // Can come from KML
+            this.transportType = "walk";
+            setTimeout(() => {
+                this.fileSubmitted = true;
+                this.disableSubmit = false;
+            }, 3000);
+        },
+
+        /**
+         * Calculates the carbon distance given two points
+         * Assumes fuel efficiency of 8L/100Km for cars and co2 production of 1138 g/km
+         * Average passenger count assumed to be 30
+         */
+        carbonDistance(distance, type) {
+            switch (type) {
+                case "car":
+                    return 0;
+                case "bus":
+                    return (8 * 2392 * distance / 100) - (distance * 1138 / 30);
+                default:
+                    return 8 * 2392 * distance / 100;
             }
         },
 
-        methods: {
+        /**
+         * Handles submission of location data.
+         *
+         **/
+        submit() {
+            if (sessionStorage.getItem("submittedValues") === 'true') {
+                let points = Number.parseInt(sessionStorage.getItem("leafPoints"));
+                //works even if points is null
+                let convertedDistance = Math.round(this.carbonDistance(this.distance, this.transportType) / 100);
+                points += convertedDistance;
+                let totalPoints = Number.parseInt(sessionStorage.getItem("totalLeafPoints")) + convertedDistance;
+                sessionStorage.setItem("totalLeafPoints", totalPoints.toString());
+                //update points
+                this.$refs.nav.loadPoints(points);
+                sessionStorage.setItem("leafPoints", Math.round(points).toString());
+                this.$refs.map.updateMarkers();
 
-            chooseFile() {
-                this.upload = document.getElementById("fileUpload").click();
-                this.distance = 6.2;
-                sessionStorage.setItem("distance", this.distance)
-                this.co2saved = this.carbonDistance(this.distance, "walk");
-                sessionStorage.setItem("co2saved", this.co2saved);
-                // Can come from KML
-                this.transportType = "walk";
-                setTimeout(() => {
-                    this.fileSubmitted = true;
-                    this.disableSubmit = false;
-                }, 3000);
-            },
-
-            /**
-             * Calculates the carbon distance given two points
-             * Assumes fuel efficiency of 8L/100Km for cars and co2 production of 1138 g/km
-             * Average passenger count assumed to be 30
-             */
-            carbonDistance(distance, type) {
-                switch (type) {
-                    case "car":
-                        return 0;
-                    case "bus":
-                        return (8 * 2392 * distance / 100) - (distance * 1138 / 30);
-                    default:
-                        return 8 * 2392 * distance / 100;
-                }
-            },
-
-            /**
-             * Handles submission of location data.
-             *
-             **/
-            submit() {
-                if (sessionStorage.getItem("submittedValues") === 'true') {
-                    let points = Number.parseInt(sessionStorage.getItem("leafPoints"));
-                    //works even if points is null
-                    let convertedDistance = Math.round(this.carbonDistance(this.distance, this.transportType) / 100);
-                    points += convertedDistance;
-                    let totalPoints = Number.parseInt(sessionStorage.getItem("totalLeafPoints")) + convertedDistance;
-                    sessionStorage.setItem("totalLeafPoints", totalPoints.toString());
-                    //update points
-                    this.$refs.nav.loadPoints(points);
-                    sessionStorage.setItem("leafPoints", Math.round(points).toString());
-                    this.$refs.map.updateMarkers();
-
-                } else {
-                    sessionStorage.setItem("submittedValues", "true");
-                    this.firstSubmit = true;
-                    this.showModal = true;
-                }
-            },
-
-            /**
-             * Handles closing the modal and sets disables the submit button until the user reuploads.
-             */
-            closeModal() {
-
-                this.showModal = false;
-                this.disableSubmit = true;
+            } else {
+                sessionStorage.setItem("submittedValues", "true");
+                this.firstSubmit = true;
+                this.showModal = true;
             }
+        },
 
+        /**
+         * Handles closing the modal and sets disables the submit button until the user reuploads.
+         */
+        closeModal() {
 
+            this.showModal = false;
+            this.disableSubmit = true;
         }
+
+
     }
+}
 </script>
 
 <style scoped>
