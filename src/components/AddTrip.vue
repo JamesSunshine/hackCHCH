@@ -16,10 +16,12 @@
                         {{ trip.endLocation }} ({{ trip.distance }} km) [{{ trip.time }}]
                     </li>
                 </ul>
-                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2 mx-10 w-56">Add Scheduled
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2 mx-10 w-56">
+                    Add Scheduled
                     Trip
                 </button>
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2 mx-10 w-56">Remove Scheduled
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2 mx-10 w-56">
+                    Remove Scheduled
                     Trip
                 </button>
             </div>
@@ -34,12 +36,80 @@
                     <GoogleMap v-bind:kml-upload="uploaded" class="m-auto"></GoogleMap>
 
                 </div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
+                <div v-if="!disableSubmit">
+                <button class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
                         v-on:click="submit"
                         v-if="fileSubmitted">Submit
                 </button>
+                </div>
+                <div v-else>
+                    <button class="bg-red-300 hover:bg-red-300 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
+                            disabled>Submit
+                    </button>
+                </div>
+
             </div>
         </div>
+
+        <transition name="fade">
+            <!-- Modal from https://tailwindui.com/components/application-ui/overlays/modals-->
+            <div class="fixed z-10 inset-0 overflow-y-auto" v-if="showModal">
+                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <!--
+                      Background overlay, show/hide based on modal state.
+
+                      Entering: "ease-out duration-300"
+                        From: "opacity-0"
+                        To: "opacity-100"
+                      Leaving: "ease-in duration-200"
+                        From: "opacity-100"
+                        To: "opacity-0"
+                    -->
+                    <div class="fixed inset-0 transition-opacity">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                    </div>
+
+                    <!-- This element is to trick the browser into centering the modal contents. -->
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
+                    <!--
+                      Modal panel, show/hide based on modal state.
+
+                      Entering: "ease-out duration-300"
+                        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        To: "opacity-100 translate-y-0 sm:scale-100"
+                      Leaving: "ease-in duration-200"
+                        From: "opacity-100 translate-y-0 sm:scale-100"
+                        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    -->
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                         role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div class="sm:flex sm:items-start">
+                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                                        File Invalid
+                                    </h3>
+                                    <div class="mt-2">
+                                        <p class="text-sm leading-5 text-gray-800">
+                                            You have not travelled far enough!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+        <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+          <button v-on:click="closeModal"  type="button"
+                  class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+            Ok
+          </button>
+        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
     </div>
 </template>
 
@@ -56,6 +126,9 @@
                 distance: "",
                 uploaded: null,
                 fileSubmitted: false,
+                firstSubmit: false,
+                showModal: false,
+                disableSubmit: false,
                 co2saved: 0,
                 scheduledTrips: [
                     {
@@ -82,6 +155,7 @@
                 this.transportType = "walk";
                 setTimeout(() => {
                     this.fileSubmitted = true;
+                    this.disableSubmit = false;
                 }, 3000);
             },
 
@@ -106,16 +180,31 @@
              *
              **/
             submit() {
-                let points = Number.parseInt(sessionStorage.getItem("leafPoints"));
-                //works even if points is null
-                let convertedDistance = Math.round(this.carbonDistance(this.distance, this.transportType) / 100);
-                points += convertedDistance;
-                let totalPoints = Number.parseInt(sessionStorage.getItem("totalLeafPoints")) + convertedDistance;
-                sessionStorage.setItem("totalLeafPoints", totalPoints.toString());
-                //update points
-                this.$refs.nav.loadPoints(points);
-                sessionStorage.setItem("leafPoints", Math.round(points).toString());
+                if (sessionStorage.getItem("submittedValues") === 'true') {
+                    let points = Number.parseInt(sessionStorage.getItem("leafPoints"));
+                    //works even if points is null
+                    let convertedDistance = Math.round(this.carbonDistance(this.distance, this.transportType) / 100);
+                    points += convertedDistance;
+                    let totalPoints = Number.parseInt(sessionStorage.getItem("totalLeafPoints")) + convertedDistance;
+                    sessionStorage.setItem("totalLeafPoints", totalPoints.toString());
+                    //update points
+                    this.$refs.nav.loadPoints(points);
+                    sessionStorage.setItem("leafPoints", Math.round(points).toString());
+                } else {
+                    sessionStorage.setItem("submittedValues", "true");
+                    this.firstSubmit = true;
+                    this.showModal = true;
+                }
             },
+
+            /**
+             * Handles closing the modal and sets disables the submit button until the user reuploads.
+             */
+            closeModal() {
+
+                this.showModal = false;
+                this.disableSubmit = true;
+            }
 
 
         }

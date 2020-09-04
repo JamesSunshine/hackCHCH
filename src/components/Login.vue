@@ -59,6 +59,7 @@
                 sessionStorage.setItem("badgeEarnt", "false");
                 sessionStorage.setItem("distance", "0");
                 sessionStorage.setItem("co2saved", "0");
+                sessionStorage.setItem("submittedValues", "false");
                 await this.$router.push({name: "profile"});
             }
         }
