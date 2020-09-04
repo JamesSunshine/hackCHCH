@@ -22,6 +22,10 @@ body {
     background-color: #FBEEC1;
 }
 
+.general-container-rounded-no-padding {
+    border-radius: 2em;
+}
+
 .general-container-rounded {
     border-radius: 2em;
     padding: 2em;
@@ -41,4 +45,9 @@ body {
 
 .float-right {
     float: right;
+}
+
+.badge-icon {
+    width: 2em;
+    height: 2em;
 }
