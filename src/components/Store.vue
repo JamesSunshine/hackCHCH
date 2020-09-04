@@ -20,12 +20,18 @@
             </div>
         </transition>
         <div class="p-3 m-5">
-            <div v-for="item in items" :key="item.itemId" class="general-container-rounded bg-white m-8">
-                <div v-on:click="confirm(item.cost)" class="">
-                    <p class="tb-float-right text-3xl">{{item.cost}}</p>
+            <div class="general-container-rounded bg-white m-8">
+                <div v-on:click="confirm(items[0].cost)" class="">
+                    <p class="tb-float-right text-3xl">{{items[0].cost}}</p>
                     <img class="content-center" src="../assets/treeForStore.png" alt="Store image">
-                    <p class="text-center text-xl font-bold">{{item.name}}</p>
-                    <p>{{item.description}}</p>
+                    <p class="text-center text-xl font-bold">{{items[0].name}}</p>
+                    <p>{{items[0].description}}</p>
+                </div>
+                <div v-on:click="confirm(items[1].cost)" class="">
+                    <p class="tb-float-right text-3xl">{{items[1].cost}}</p>
+                    <img class="content-center" src="../assets/treeForStore.png" alt="Store image">
+                    <p class="text-center text-xl font-bold">{{items[1].name}}</p>
+                    <p>{{items[1].description}}</p>
                 </div>
             </div>
         </div>
