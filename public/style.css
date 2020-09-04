@@ -26,6 +26,9 @@ body {
     border-radius: 2em;
     padding: 2em;
 }
+* {
+    font-family: 'Roboto', sans-serif;
+}
 
 .radius-border {
     border-radius: 2em;
