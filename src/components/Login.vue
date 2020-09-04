@@ -57,6 +57,8 @@
                 sessionStorage.setItem("totalLeafPoints", 54);
                 sessionStorage.setItem("leafPoints", 54);
                 sessionStorage.setItem("badgeEarnt", "false");
+                sessionStorage.setItem("distance", "0");
+                sessionStorage.setItem("co2saved", "0");
                 await this.$router.push({name: "profile"});
             }
         }

@@ -8,13 +8,15 @@
                 <img src="https://cdn.discordapp.com/attachments/726046163576422512/751237699356196925/unknown.png"
                      class="w-full"/>
                 <div class="flex justify-center -mt-8">
-                    <img src="https://media.discordapp.net/attachments/554945397328576533/742975383640604702/output_ba721G.gif"
+                    <img src="https://media.discordapp.net/attachments/751284461253033984/751568650389028914/unknown.png"
                          class="rounded-full border-solid border-white border-2 -mt-3 w-1/3 shadow-lg">
                 </div>
                 <div class="text-center px-3 pb-6 pt-2">
                     <h3 class="text-black text-sm bold font-sans">{{ userName }}</h3>
-                    <p class="mt-2 font-sans font-light text-grey-dark">Hello, I really love biking and running and
+                    <p class="mt-2 font-sans font-light text-grey-dark pb-4">Hello, I really love biking and running and
                         busing!</p>
+                    <label class="border-t-2"><span class="font-bold">Distance:</span> {{distance}} km</label><br>
+                    <label class="border-b-2"><span class="font-bold">CO2 saved:</span> {{co2saved}}</label>
                 </div>
                 <div class="flex justify-center pb-3 text-grey-dark">
                     <div class="text-center mr-3 border-r pr-3">
@@ -62,18 +64,18 @@
 
             </div>
 
-            <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5">
-                <div>
-                    <div class="border-b-2 border-gray-500 pb-2">
-                        <label class="text-lg font-bold">User statistics</label><br>
-                    </div>
-                    <div class="mt-4">
-                        <label>Distance: 125km</label><br>
-                        <label>CO2 saved: 12.2</label>
-                    </div>
+<!--            <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5">-->
+<!--                <div>-->
+<!--                    <div class="border-b-2 border-gray-500 pb-2">-->
+<!--                        <label class="text-lg font-bold">User statistics</label><br>-->
+<!--                    </div>-->
+<!--                    <div class="mt-4">-->
+<!--                        <label>Distance: 125km</label><br>-->
+<!--                        <label>CO2 saved: 12.2</label>-->
+<!--                    </div>-->
 
-                </div>
-            </div>
+<!--                </div>-->
+<!--            </div>-->
 
             <!--        <div class="m-auto bg-white general-container-rounded mx-5 mt-5 mb-5">-->
             <!--            <div>-->
@@ -111,9 +113,11 @@
         name: "Profile",
         components: {NavBar},
         mounted: async function () {
+            this.distance = sessionStorage.getItem("distance")
             this.userName = sessionStorage.getItem("userName");
             let badgeEarned = sessionStorage.getItem("badgeEarnt");
             this.leafPoints = sessionStorage.getItem("leafPoints")
+            this.co2saved = sessionStorage.getItem("co2saved");
             if (badgeEarned === "true") {
                 this.badgeEarned = true;
             }
@@ -123,7 +127,9 @@
             return {
                 userName: "",
                 badgeEarned: false,
-                leafPoints: 0
+                leafPoints: 0,
+                distance: 0,
+                co2saved: 0
             }
         },
 

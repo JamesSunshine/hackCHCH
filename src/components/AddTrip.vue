@@ -56,6 +56,7 @@
                 distance: "",
                 uploaded: null,
                 fileSubmitted: false,
+                co2saved: 0,
                 scheduledTrips: [
                     {
                         tripId: 0,
@@ -74,6 +75,9 @@
             chooseFile() {
                 this.upload = document.getElementById("fileUpload").click();
                 this.distance = 6.2;
+                sessionStorage.setItem("distance", this.distance)
+                this.co2saved = this.carbonDistance(this.distance, "walk");
+                sessionStorage.setItem("co2saved", this.co2saved);
                 // Can come from KML
                 this.transportType = "walk";
                 setTimeout(() => {
