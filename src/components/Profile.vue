@@ -67,8 +67,8 @@
                         <label class="text-lg font-bold">User statistics</label><br>
                     </div>
                     <div class="mt-4">
-                        <label>Distance: 0km</label><br>
-                        <label>CO2 saved: 0</label>
+                        <label>Distance: 125km</label><br>
+                        <label>CO2 saved: 12.2</label>
                     </div>
 
                 </div>
