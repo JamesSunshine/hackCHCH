@@ -9,7 +9,7 @@
                      class="w-full"/>
                 <div class="flex justify-center -mt-8">
                     <img src="https://media.discordapp.net/attachments/554945397328576533/742975383640604702/output_ba721G.gif"
-                         class="rounded-full border-solid border-white border-2 -mt-3 w-1/3">
+                         class="rounded-full border-solid border-white border-2 -mt-3 w-1/3 shadow-lg">
                 </div>
                 <div class="text-center px-3 pb-6 pt-2">
                     <h3 class="text-black text-sm bold font-sans">{{ userName }}</h3>
