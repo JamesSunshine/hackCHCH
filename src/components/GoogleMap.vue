@@ -14,15 +14,15 @@
             },
             long: {
                 type: Number,
-                default: 172.7097
+                default: 172.6097
             },
             zoom: {
                 type: Number,
-                default: 11,
+                default: 13,
             },
             markers: {
                 type: Array,
-                default: () => [],
+                default: () => [{lat: -43.5320, lng: 172.6197}, {lat: -43.5320, lng: 172.5897}],
             }
         },
 
@@ -32,6 +32,7 @@
                 markerLat: null,
                 markerLong: null,
                 kmlLayer: null,
+                actualMarkers: [],
             }
         },
 
@@ -72,11 +73,26 @@
                     this.markerPos = this.markers[i];
                     var marker = new window.google.maps.Marker({
                         position: this.markerPos,
+                        animation: window.google.maps.Animation.DROP,
                         title: "Hello World!"
                     });
+                    marker.setVisible(false);
+                    this.actualMarkers.push(marker);
                     marker.setMap(this.map);
                 }
             },
+
+
+            /**
+            * Repopulates the map with markers.
+             */
+            updateMarkers() {
+                for (let i = 0; i < this.actualMarkers.length; i++) {
+                    let marker = this.actualMarkers[i];
+                    marker.setVisible(true);
+                }
+
+            }
 
         }
     }

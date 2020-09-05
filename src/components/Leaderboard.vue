@@ -15,9 +15,11 @@
                     Trees Donated</a>
             </li>
         </ul>
-        <div class="mt-2">
+        <div class="mt-2 general-container-rounded bg-white mx-6 shadow-lg">
+            <p class="pl-3 text-2xl border-b-2 mb-5">{{currentLeaderboard}}</p>
+
             <div v-if="teamLeaf">
-                <table class="m-auto">
+                <table class="m-auto shadow-lg">
                     <thead>
                     <tr class="bg-gray-100">
                         <th class="px-4 py-2">Team</th>
@@ -33,7 +35,7 @@
                 </table>
             </div>
             <div v-if="soloLeaf" class="">
-                <table class="m-auto">
+                <table class="m-auto shadow-lg">
                     <thead>
                     <tr class="bg-gray-100">
                         <th class="px-4 py-2">Name</th>
@@ -49,7 +51,7 @@
                 </table>
             </div>
             <div v-if="soloTree">
-                <table class="m-auto">
+                <table class="m-auto shadow-lg">
                     <thead>
                     <tr class="bg-gray-100">
                         <th class="px-4 py-2">Name</th>
@@ -78,6 +80,7 @@
         components: {NavBar},
         data() {
             return {
+                currentLeaderboard: "Team Weekly Leaderboard",
                 items: [{leafPoints: 70, userName: "Nishi Kawa"},
                     {leafPoints: 50, userName: "John Smith"},
                     {leafPoints: 37, userName: "Ryzaak Sunshine"},
@@ -123,16 +126,20 @@
                         this.teamLeaf = true;
                         this.soloLeaf = false;
                         this.soloTree = false;
+                        this.currentLeaderboard = "Team Weekly Leaf Points";
                         break;
                     case('soloLeaf'):
                         this.teamLeaf = false;
                         this.soloLeaf = true;
                         this.soloTree = false;
+                        this.currentLeaderboard = "Solo Weekly Leaf Points";
                         break;
                     case('soloTree'):
                         this.teamLeaf = false;
                         this.soloLeaf = false;
                         this.soloTree = true;
+                        this.currentLeaderboard = "Total Trees Donated";
+
                         break;
                 }
             }

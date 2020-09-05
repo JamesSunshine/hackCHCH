@@ -11,10 +11,6 @@
 export default {
   name: 'App',
 
-  mounted() {
-
-    this.loadPoints();
-  },
 }
 </script>
 

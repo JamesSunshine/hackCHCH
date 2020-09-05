@@ -8,7 +8,7 @@
                      class="w-full"/>
                 <div class="flex justify-center -mt-8">
                     <img src="https://st2.depositphotos.com/7109552/11355/v/950/depositphotos_113556662-stock-illustration-infinity-design-infinity-logo-vector.jpg"
-                         class="rounded-full border-solid border-white border-2 -mt-3 w-1/3">
+                         class="rounded-full border-solid border-white border-2 -mt-3 w-1/3 shadow-lg">
                 </div>
                 <div class="text-center px-3 pb-6 pt-2">
                     <h3 class="text-black text-sm bold font-sans">Green Corp.</h3>
