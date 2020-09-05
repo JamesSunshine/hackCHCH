@@ -8,40 +8,33 @@
             <br><br><br>
         </div>
         <div class="m-5 SavedTrips general-container-rounded bg-white m">
-            <div>
-                <h1 class="text-xl font-bold">Scheduled Trips</h1>
-                <ul>
-                    <li class="text-xl" v-for="trip in this.scheduledTrips" :key="trip.tripId">{{ trip.name }}: {{
-                            trip.startLocation
-                        }} ->
-                        {{ trip.endLocation }} ({{ trip.distance }} km) [{{ trip.time }}]
-                    </li>
-                </ul>
-                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2 mx-10 w-56">
-                    Add Scheduled
-                    Trip
-                </button>
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2 mx-10 w-56">
-                    Remove Scheduled
-                    Trip
-                </button>
-            </div>
-            <div class="border-t my-5">
+            <h1 class="text-2xl border-b-2 mx-5">Add a Trip</h1>
+            <div class="my-5">
                 <input id="fileUpload" type="file" hidden>
+
+                <div v-if="!finalValid">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5 m-10 w-56"
                         @click="chooseFile()">
                     Upload Data
                 </button>
+                </div>
+                <div v-else>
+                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded my-5 m-10 w-56">
+                        You gained 4 leaf points!
+                    </button>
+                </div>
+
+
                 <div>
 
                     <GoogleMap v-bind:kml-upload="uploaded" class="m-auto" ref="map"></GoogleMap>
 
                 </div>
-                <div v-if="fileSubmitted">
+                <div v-if="fileSubmitted" class="text-lg mx-10 mt-2">
                     Distance Travelled: {{distance}}km
                 </div>
                 <div v-if="!disableSubmit">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5 m-16 w-48"
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5 m-10 w-56"
                             v-on:click="submit"
                             v-if="fileSubmitted">Submit
                     </button>
@@ -95,7 +88,7 @@
                                     </h3>
                                     <div class="mt-2">
                                         <p class="text-sm leading-5 text-gray-800">
-                                            You have not travelled far enough!
+                                            This file contains invalid data.
                                         </p>
                                     </div>
                                 </div>
@@ -109,6 +102,47 @@
           </button>
         </span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+
+
+        <!--Confirmation-->
+        <transition name="fade">
+            <!-- Modal from https://tailwindui.com/components/application-ui/overlays/modals-->
+            <div class="fixed z-10 inset-0 overflow-y-auto" v-if="showOK">
+                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                    <!--
+                      Background overlay, show/hide based on modal state.
+
+                      Entering: "ease-out duration-300"
+                        From: "opacity-0"
+                        To: "opacity-100"
+                      Leaving: "ease-in duration-200"
+                        From: "opacity-100"
+                        To: "opacity-0"
+                    -->
+                    <div class="fixed inset-0 transition-opacity">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                    </div>
+
+                    <!-- This element is to trick the browser into centering the modal contents. -->
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
+                    <!--
+                      Modal panel, show/hide based on modal state.
+
+                      Entering: "ease-out duration-300"
+                        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        To: "opacity-100 translate-y-0 sm:scale-100"
+                      Leaving: "ease-in duration-200"
+                        From: "opacity-100 translate-y-0 sm:scale-100"
+                        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    -->
+                    <div class="inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-48 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                         role="dialog" aria-modal="true" aria-labelledby="modal-headlineOK">
+                        <img src="https://media.discordapp.net/attachments/751284461253033984/751591085763067914/tick.png">
                     </div>
                 </div>
             </div>
@@ -133,7 +167,10 @@ export default {
             firstSubmit: false,
             showModal: false,
             disableSubmit: false,
+            completed: false,
             co2saved: 0,
+            showOK: false,
+            finalValid: false,
             scheduledTrips: [
                 {
                     tripId: 0,
@@ -195,6 +232,12 @@ export default {
                 this.$refs.nav.loadPoints(points);
                 sessionStorage.setItem("leafPoints", Math.round(points).toString());
                 this.$refs.map.updateMarkers();
+                this.completed = true;
+                this.showOK = true;
+                this.finalValid = true;
+                setTimeout(() => {
+                    this.showOK = false;
+                }, 750);
 
             } else {
                 sessionStorage.setItem("submittedValues", "true");
@@ -218,5 +261,12 @@ export default {
 </script>
 
 <style scoped>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 0.2s;
+    }
 
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+    {
+        opacity: 0;
+    }
 </style>
