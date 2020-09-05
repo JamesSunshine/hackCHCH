@@ -29,7 +29,7 @@
                 </div>
                 <div v-on:click="confirm(items[1].cost)" class="">
                     <p class="tb-float-right text-3xl">{{items[1].cost}}</p>
-                    <img class="content-center" src="../assets/treeForStore.png" alt="Store image">
+                    <img class="content-center" src="../assets/coffeeshop.png" alt="Store image">
                     <p class="text-center text-xl font-bold">{{items[1].name}}</p>
                     <p>{{items[1].description}}</p>
                 </div>
