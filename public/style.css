@@ -1,5 +1,53 @@
-@tailwind base;
+.bg-earth-green {
+    background-color: #8D8741;
+}
 
-@tailwind components;
+.bg-earth-blue {
+    background-color: #659DBD;
+}
 
-@tailwind utilities;
+.bg-earth-pink {
+    background-color: #DAAD86;
+}
+
+.bg-earth-brown {
+    background-color: #BC986A;
+}
+
+.bg-earth-light-brown {
+    background-color: #FBEEC1;
+}
+
+body {
+    background-color: #FBEEC1;
+}
+
+.general-container-rounded-no-padding {
+    border-radius: 2em;
+}
+
+.general-container-rounded {
+    border-radius: 2em;
+    padding: 2em;
+}
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.radius-border {
+    border-radius: 2em;
+}
+
+.round-button {
+    border-radius: 2em;
+    padding: 0.2em 1em;
+}
+
+.float-right {
+    float: right;
+}
+
+.badge-icon {
+    width: 2em;
+    height: 2em;
+}
