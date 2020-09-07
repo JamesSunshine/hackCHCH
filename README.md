@@ -9,6 +9,13 @@ A link to the project demo can be found here: https://youtu.be/bxJ3zRGzzPI
 CompetiTrees is a mobile friendly web app that incentivises eco friendly travel options by gamifying their use of green travel. Users can earn leaf points by saving on emissions and spend their leaf points on rewards, such as discounts for coffee. Users can also earn virtual rewards such as badges for achieving milestones.
 Users can compete with friends solo or in teams to earn the most leaf points. And have the option to donate to plant a native tree.
 
+
+### To Run
+
+F12 -> Ensure the browser is displaying at an iPhone 6/7/8 Plus.
+
+Reminder: This is made as a proof of concept rather than a fully functional application. It is suggested to watch the demo rather than running the program.
+
 ### HackChCh
 
 hackChch is your opportunity to use what you’ve learned in your studies to bring an innovative idea to life. The 48 hour hackathon takes place on the 4th & 5th of September and takes inspiration from the Smart Christchurch programme created by the Christchurch City Council. 
